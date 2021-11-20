@@ -1,0 +1,46 @@
+{% load static  %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    {% block title %}<title>Youtube-Api</title>{% endblock %}
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+    />
+  </head>
+    {% block nav %}
+        <div class="form-inline my-2 my-lg-0 ml-auto">
+          <a class="btn btn-primary mx-2" href="{% url 'videos' %}" role="button">Videos</a>
+          <a class="btn btn-success mx-2" href="{% url 'search' %}" role="button">Search</a>
+          <a class="btn btn-success mx-2" href="{% url 'extract' %}" role="button">Extract</a>
+        </div>
+    {% endblock %}
+
+  <body>
+
+    {% block header %} {% endblock %}
+    {% block body %}{% endblock %}
+    {% block footer %}{% endblock %}
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    {% block script %}{% endblock %}
+  </body>
+</html>

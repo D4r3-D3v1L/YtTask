@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+
+{% block title %}<title>Video History</title>{% endblock %}
+
+
+{% block header %}
+<header class="masthead text-center" >
+  <h2 class='text-monospace text-light mx-5'>Present Video's Count : {{page_obj.paginator.count}}</h2>
+  <div class="container-fluid text-center" >
+    <table class="table table-light">
+      <thead class="thead-dark">
+      <TR>
+        <TH>Title</TH>
+        <TH>Description</TH>
+        <TH>PublishedAt</TH>
+        <TH>ThumbnailsUrls</TH>
+      </TR>
+      </thead>
+      <tbody>
+      {% for video in page_obj %}
+      <TR>
+        <TD>{{ video.title }}</TD>
+        <TD>{{ video.description }}</TD>
+        <TD>{{ video.publishedAt }}</TD>
+        <TD>{{ video.thumbnailsUrls}}</TD>
+      </TR>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</header>
+{% endblock %}
+
+{% block footer %}
+    <div class="col-md-12">
+        {% if is_paginated %}
+            {% if page_obj.has_previous %}
+                <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if num == page_obj.number %}
+                    <a class="btn btn-info mb-4" href="?page={{num}}">{{num}}</a>
+                    {% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
+                    <a class="btn btn-outline-info mb-4" href="?page={{num}}">{{num}}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages  }}">Last</a>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}
+

@@ -1,0 +1,6 @@
+Django
+django_crontab
+django-crispy-forms
+django-mathfilters
+apscheduler
+google-api-python-client

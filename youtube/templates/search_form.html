@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block header %}
+<div class="container">
+    <form >
+        {{form|crispy}}
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Search</button>
+        </div>
+    </form>
+
+</div>
+{% endblock %}
